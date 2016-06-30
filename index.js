@@ -8,11 +8,11 @@
 var path = require('path');
 
 module.exports = function (ret, conf, settings, opt) {
-  if(!settings.tag instanceof Array){
+  if(!settings.attr instanceof Array){
     return false;
   }
-  settings.tag.forEach(function (_tag){
-    var reg = eval('/'+_tag+'=["\'](.*)["\']/ig');
+  settings.attr.forEach(function (_attr){
+    var reg = eval('/'+_attr+'=["\'](.*)["\']/ig');
     for(var key in ret.src){
       var file = ret.src[key];
       if(file.isHtmlLike){
@@ -23,7 +23,7 @@ module.exports = function (ret, conf, settings, opt) {
             return match;
           }
           var _url = ret.src[_file].getUrl();
-          return _tag + '=\"' + _url + '\"';
+          return _attr + '=\"' + _url + '\"';
         });
         file.setContent( content );
       }
