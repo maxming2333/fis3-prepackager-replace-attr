@@ -1,6 +1,6 @@
 {
   "name": "fis3-prepackager-replace-attr",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a parser plugin for fis3",
   "main": "index.js",
   "scripts": {
