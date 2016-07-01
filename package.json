@@ -1,7 +1,7 @@
 {
   "name": "fis3-prepackager-replace-attr",
-  "version": "0.0.3",
-  "description": "a parser plugin for fis3",
+  "version": "0.0.4",
+  "description": "a prepackager plugin for fis3",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

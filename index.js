@@ -22,6 +22,8 @@ module.exports = function (ret, conf, settings, opt) {
             console.error( 'can\'t find [' + _file + '] in ' + key );
             return match;
           }
+          // 加到 fis.links 里面
+          file.addLink( _file );
           var _url = ret.src[_file].getUrl();
           return _attr + '=\"' + _url + '\"';
         });
