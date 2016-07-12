@@ -12,7 +12,7 @@ module.exports = function (ret, conf, settings, opt) {
     return false;
   }
   settings.attr.forEach(function (_attr){
-    var reg = eval('/'+_attr+'=["\'](.*)["\']/ig');
+    var reg = new RegExp(_attr+'=["\']([^"\']+)["\']', 'ig');
     for(var key in ret.src){
       var file = ret.src[key];
       if(file.isHtmlLike){
