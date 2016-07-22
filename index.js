@@ -24,11 +24,25 @@ module.exports = function (ret, conf, settings, opt) {
           }
           // 加到 fis.links 里面
           file.addLink( _file );
-          var _url = ret.src[_file].getUrl();
+
+          // 如果设置相对路径产出
+          var relative = {
+            target: ret.src[_file],
+            file: file
+          };
+          fis.emit('plugin:relative:fetch', relative);
+
+          var _url = '';
+          if(relative.ret){
+            _url = relative.ret;
+          }else{
+            _url = ret.src[_file].getUrl();
+          }
+
           return _attr + '=\"' + _url + '\"';
         });
         file.setContent( content );
       }
     }
   })
-}
+};
