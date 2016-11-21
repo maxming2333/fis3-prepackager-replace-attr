@@ -12,11 +12,14 @@ module.exports = function (ret, conf, settings, opt) {
     return false;
   }
   settings.attr.forEach(function (_attr){
-    var reg = new RegExp(_attr+'=["\']([^"\']+)["\']', 'ig');
+    var reg = new RegExp(_attr+'=["\']([^"\'{}!~`\^]+)["\']', 'ig');
     for(var key in ret.src){
       var file = ret.src[key];
       if(file.isHtmlLike){
         var content = file.getContent().replace(reg, function (match, p1, offset, string) {
+          if(/\/\//ig.test(p1)){
+            return match;
+          }
           var _file = path.resolve(file.subdirname, p1);
           if(!ret.src[_file]){
             console.error( 'can\'t find [' + _file + '] in ' + key );
